@@ -10,8 +10,7 @@ import '../widgets/profile_avatar.dart';
 class PersonalBioScreen extends StatelessWidget {
   const PersonalBioScreen({super.key});
 
-  static const _avatarUrl =
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop';
+  static const _avatarAsset = 'assets/images/profile_avatar.png';
 
   Future<void> _launchUrl(String url) async {
     final uri = Uri.parse(url);
@@ -47,7 +46,7 @@ class PersonalBioScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(height: 40),
-                      const ProfileAvatar(imageUrl: _avatarUrl, size: 110)
+                      const ProfileAvatar(assetPath: _avatarAsset, size: 110)
                           .animate()
                           .scale(duration: 500.ms, curve: Curves.elasticOut),
                       const SizedBox(height: 16),

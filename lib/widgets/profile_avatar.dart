@@ -5,12 +5,17 @@ import 'package:shimmer/shimmer.dart';
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({
     super.key,
-    required this.imageUrl,
+    this.imageUrl,
+    this.assetPath,
     this.size = 120,
     this.showBorder = true,
-  });
+  }) : assert(
+          imageUrl != null || assetPath != null,
+          'Either imageUrl or assetPath must be provided',
+        );
 
-  final String imageUrl;
+  final String? imageUrl;
+  final String? assetPath;
   final double size;
   final bool showBorder;
 
@@ -28,7 +33,7 @@ class ProfileAvatar extends StatelessWidget {
             : null,
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6366F1).withOpacity( 0.4),
+            color: const Color(0xFF6366F1).withOpacity(0.4),
             blurRadius: 24,
             offset: const Offset(0, 8),
           ),
@@ -36,20 +41,32 @@ class ProfileAvatar extends StatelessWidget {
       ),
       padding: showBorder ? const EdgeInsets.all(3) : EdgeInsets.zero,
       child: ClipOval(
-        child: CachedNetworkImage(
-          imageUrl: imageUrl,
-          fit: BoxFit.cover,
-          placeholder: (context, url) => Shimmer.fromColors(
-            baseColor: Colors.grey.shade800,
-            highlightColor: Colors.grey.shade600,
-            child: Container(color: Colors.grey.shade800),
-          ),
-          errorWidget: (context, url, error) => Container(
-            color: const Color(0xFF312E81),
-            child: Icon(Icons.person, size: size * 0.5, color: Colors.white54),
-          ),
-        ),
+        child: assetPath != null
+            ? Image.asset(
+                assetPath!,
+                fit: BoxFit.cover,
+                width: size,
+                height: size,
+                errorBuilder: (context, error, stackTrace) => _fallbackIcon(),
+              )
+            : CachedNetworkImage(
+                imageUrl: imageUrl!,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => Shimmer.fromColors(
+                  baseColor: Colors.grey.shade800,
+                  highlightColor: Colors.grey.shade600,
+                  child: Container(color: Colors.grey.shade800),
+                ),
+                errorWidget: (context, url, error) => _fallbackIcon(),
+              ),
       ),
+    );
+  }
+
+  Widget _fallbackIcon() {
+    return Container(
+      color: const Color(0xFF312E81),
+      child: Icon(Icons.person, size: size * 0.5, color: Colors.white54),
     );
   }
 }
