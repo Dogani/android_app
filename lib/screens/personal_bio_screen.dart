@@ -130,14 +130,14 @@ class PersonalBioScreen extends StatelessWidget {
                     BioLinkButton(
                       label: 'GitHub Profile',
                       icon: Iconsax.code_1,
-                      onTap: () => _launchUrl('https://github.com'),
+                      onTap: () => _launchUrl('https://github.com/Dogani'),
                       delay: 650.ms,
                     ),
                     const SizedBox(height: 12),
                     BioLinkButton(
                       label: 'LinkedIn',
                       icon: Iconsax.link,
-                      onTap: () => _launchUrl('https://linkedin.com'),
+                      onTap: () => _launchUrl('https://www.linkedin.com/in/peter-dogani-673883140/'),
                       delay: 700.ms,
                     ),
                     const SizedBox(height: 12),
@@ -158,17 +158,17 @@ class PersonalBioScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     _InfoTile(
                       icon: Iconsax.location,
-                      label: 'San Francisco, CA',
+                      label: 'Dar es Salaam, Tanzania',
                       delay: 850.ms,
                     ),
                     _InfoTile(
                       icon: Iconsax.sms,
-                      label: 'alex.morgan@email.com',
+                      label: 'doganipeter@gmail.com',
                       delay: 900.ms,
                     ),
                     _InfoTile(
                       icon: Iconsax.call,
-                      label: '+1 (555) 123-4567',
+                      label: '+255 719 469 680',
                       delay: 950.ms,
                     ),
                   ],
