@@ -52,7 +52,7 @@ class PersonalBioScreen extends StatelessWidget {
                           .scale(duration: 500.ms, curve: Curves.elasticOut),
                       const SizedBox(height: 16),
                       const Text(
-                        'Alex Morgan',
+                        'Dogani Peter',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
